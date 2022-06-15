@@ -4,8 +4,8 @@ var gCanvasImg
 var gCtxImg
 
 function onInit(){
-    gCanvasImg = document.querySelector('.layer1-canvas')
-    gCtxImg = gCanvasImg.getContext('2d')
+    // gCanvasImg = document.querySelector('.canvas-layer1')
+    // gCtxImg = gCanvasImg.getContext('2d')
 }
 
 function getCanvasImg() {

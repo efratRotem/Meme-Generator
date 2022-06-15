@@ -4,7 +4,16 @@
 /* BASIC */
 @import 'basic/base.css';
 @import 'basic/layout.css';
+@import 'basic/helpers.css';
 
 
 /* COMPONENTS */
 @import 'components/main-nav.css';
+@import 'components/canvas-container.css';
+@import 'components/canvas-layer.css';
+
+.img-container {
+    height:500px;
+    width: 500px;
+    margin: auto;
+}

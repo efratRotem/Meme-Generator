@@ -1,0 +1,10 @@
+.header-layout {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-layout {
+    background-color: var(--clr1);
+    width: 80%;
+    margin: auto;
+}

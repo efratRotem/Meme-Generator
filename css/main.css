@@ -1,3 +1,10 @@
-/* BASIC */
+/* SETUP */
+@import 'setup/vars.css';
 
+/* BASIC */
 @import 'basic/base.css';
+@import 'basic/layout.css';
+
+
+/* COMPONENTS */
+@import 'components/main-nav.css';

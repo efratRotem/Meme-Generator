@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="onInit()">
     <header>
         <h1>Meme Generator</h1>
     </header>
@@ -20,15 +20,22 @@
     </section>
 
     <section class="canvas-container">
-        <canvas class="meme" height="500" width="500"></canvas>
+        <canvas class="layer1-canvas" height="500" width="500" style="position: absolute; left: 50%; top: 50%; z-index: 0;">
+            <canvas class="layer2-canvas" height="500" width="500" style="position: absolute; left: 50%; top: 50%; z-index: 1;"></canvas>
+        </canvas>
     </section>
 
     <section class="editor">
         This is my Editor!
-        <div class="editor-tools-container"></div>
+        <div class="editor-tools-container">
+            <button onclick="renderMeme()">Get Image</button>
+
+        </div>
     </section>
 
     <script src="js/main.js"></script>
+    <script src="js/meme-controller.js"></script>
+
 </body>
 
 </html>

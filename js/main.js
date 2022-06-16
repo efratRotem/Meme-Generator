@@ -1,17 +1,17 @@
 'use strict'
 
-var gCanvasImg
-var gCtxImg
+var gCanvasText
+var gCtxText
 
 function onInit(){
-    // gCanvasImg = document.querySelector('.canvas-layer1')
-    // gCtxImg = gCanvasImg.getContext('2d')
+    gCanvasText = document.querySelector('.canvas-layer2')
+    gCtxText = gCanvasText.getContext('2d')
 }
 
-function getCanvasImg() {
-    return gCanvasImg
+function getCanvasText() {
+    return gCanvasText
 }
 
-function getCtxImg() {
-    return gCtxImg
+function getCtxText() {
+    return gCtxText
 }

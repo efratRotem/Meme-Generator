@@ -3,7 +3,7 @@
 }
 
 html {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -11,8 +11,23 @@ body {
     padding: 0;
     text-align: center;
     color: var(--clr2);
+    font-size: 1.5rem;
+    background:var(--clr3);
+}
+
+ul, li {
+    margin: 2em;
 }
 
 canvas {
     position: absolute;
+}
+
+input {
+    font-size: 1em;
+    /* align-self: center; */
+    /* justify-self: center; */
+    border-radius: 1.5em;
+    margin-bottom: 0.5em;
+    border: 0;
 }

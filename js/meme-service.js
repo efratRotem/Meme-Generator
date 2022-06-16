@@ -13,7 +13,7 @@ function getImages() {
     return gImgs
 }
 
-function getMemeImg(imgId) {
+function getMemeImg(imgId=1) {
     return gImgs.find(img => img.id === imgId)
 
 }

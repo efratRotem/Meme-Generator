@@ -7,6 +7,7 @@ function onInit() {
     gCanvas = document.querySelector('.meme-canvas')
     gCtx = gCanvas.getContext('2d')
     renderGallery()
+    renderMeme()
 }
 
 function getCanvas() {

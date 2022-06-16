@@ -1,34 +1,33 @@
 'use strict'
-// var gLines = [
-//     {
-//         txt: 'I sometimes eat Falafel',
-//         size: 20,
-//         align: 'left',
-//         color: 'red'
-//     }
-// ]
 
-// var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }];
+var gLines = [
+    {
+        txt: 'I sometimes eat Falafel',
+        size: 45,
+        align: 'left',
+        color: 'red',
+        font: 'Impact'
+    }
+]
 
-// var gMeme = {
-//     selectedImgId,
-//     selectedLineIdx,
-// }
+var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }];
 
-// function getMeme(imgId, lineIdx) {
-//     gMeme.selectedImgId = imgId
-//     gMeme.selectedLineIdx = lineIdx
-//     return gMeme
-// }
+var gMeme = {
+    selectedImgId: 1,
+    selectedLineIdx: 0,
+}
 
-// function getSelectedImg(imgId) {
-//     return gImgs.find(img => {
-//         img.id === imgId
-//     })
-// }
+function getMeme(imgId, lineIdx) {
+    gMeme.selectedImgId = imgId
+    gMeme.selectedLineIdx = lineIdx
+    return gMeme
+}
 
-// function getSelectedLine(lineIdx) {
-//     return gImgs.findIndex((line, idx) => {
-//         idx === lineIdx
-//     })
-// }
+function getMemeImg(imgId) {
+    return gImgs.find(img => img.id === imgId)
+   
+}
+
+function getMemeTextLine(lineIdx) {
+    return gLines[lineIdx]
+}

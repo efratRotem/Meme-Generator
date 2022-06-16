@@ -1,46 +1,38 @@
 'use strict'
 
+var gCanvasText
+var gCtxText
+
 function renderMeme() {
+    // var meme = getMeme(1, 0)
+    var memeImg = getMemeImg(1)
+    var memeTextLine = getMemeTextLine(0)
     var canvas = getCanvas()
     var ctx = getCtx()
-
-    var canvasStack = new CanvasStack(ctx.id)
-    console.log('canvasStack:',canvasStack)
-
-    var layer1 = canvasStack.createLayer()
-    var layer1Ctx = document.getElementById(layer1).getContext('2d')
-    
-    
+    console.log('memeImg:', memeImg)
     var img = new Image()
-    img.src = 'img/1.jpg'
+    img.src = memeImg.url
     img.onload = () => {
-        layer1Ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
     }
-    
-    var layer2 = canvasStack.createLayer()
-    var layer2Ctx = document.getElementById(layer2).getContext('2d')
 
-    layer2Ctx.drawText('Enter your text here', 50, 50)
+    gCanvasText = document.getElementById('text-layer')
+    gCtxText = gCanvasText.getContext('2d')
 
-    // var elImgContainer = document.querySelector('.img-container')
-    // elImgContainer.style.height = 500
-    // elImgContainer.style.width = 500
-    // elImgContainer.style.backgroundImage = 'url(/img/1.jpg)'
-    // // elImgContainer.innerText = 'url(/img/1.jpg)'
+    drawText(gCtxText, memeTextLine, 50, 50)
+
     console.log('render');
-
-  
 }
 
-function drawText(text, x, y) {
-    var ctx = getCtx()
+function drawText(layer, textLine, x, y) {
+    var ctx = layer
     console.log('ctx:', ctx)
     ctx.lineWidth = 2
-    ctx.font = '50px Impact'
+    ctx.font = `${textLine.size}px ${textLine.font}`
     ctx.fillStyle = 'white'
     ctx.strokeStyle = 'black'
-    ctx.fillText(text, x, y)//Draws (fills) a given text at the given (x, y) position.
-    ctx.strokeText(text, x, y)//Draws (strokes) a given text at the given (x, y) position.
+    ctx.fillText(textLine.txt, x, y)//Draws (fills) a given text at the given (x, y) position.
+    ctx.strokeText(textLine.txt, x, y)//Draws (strokes) a given text at the given (x, y) position.
 }
 
 

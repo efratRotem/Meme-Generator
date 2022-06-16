@@ -17,9 +17,7 @@
     </header>
 
     <main class="main-container">
-        <section class="gallery">
-            This is my Gallery!
-        </section>
+        <section class="gallery-container"> </section>
 
         <section class="canvas-container flex">
 
@@ -30,7 +28,8 @@
 
         <section class="editor">
             This is my Editor!
-            <input onchange="onchangeInput(this)" type="text" name="" id="first-line" placeholder="Enter your text here">
+            <input onchange="onchangeInput(this)" type="text" name="" id="first-line"
+                placeholder="Enter your text here">
             <div class="editor-tools-container">
                 <button onclick="renderMeme()">Get Image</button>
 
@@ -45,6 +44,7 @@
 
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/gallery-controller.js"></script>
     <script src="js/main.js"></script>
 
 </body>

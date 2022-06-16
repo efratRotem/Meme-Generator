@@ -8,9 +8,9 @@ var gMeme = {
 }
 
 function renderMeme() {
-    // var meme = getMeme(1, 0)
-    const memeImg = getMemeImg(1)
-    const memeTextLine = getMemeTextLine(0)
+    const memeImg = getMemeImg(gMeme.selectedImgId)
+    const memeTextLine = getMemeTextLine(gMeme.selectedLineIdx)
+    // Get image-layer - the image canvas
     const canvas = getCanvas()
     const ctx = getCtx()
     console.log('memeImg:', memeImg)
@@ -19,16 +19,16 @@ function renderMeme() {
     img.onload = () => {
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
     }
-
+    //Get text-layer - the text canvas
     gCanvasText = document.getElementById('text-layer')
     gCtxText = gCanvasText.getContext('2d')
-    clearCanvas()
+    //Clearing former text
+    _clearCanvas()
+    //Drawing new text
     drawText(gCtxText, memeTextLine, 50, 50)
-
-    console.log('render');
 }
 
-// Putting text on maim-canvas as a layer
+// Putting text on maim-container as a canvas layer
 function drawText(layer, textLine, x, y) {
     const ctx = layer
     console.log('ctx:', ctx)
@@ -51,6 +51,6 @@ function getLineTxt() {
     return elLineTxt
 }
 
-function clearCanvas() {
+function _clearCanvas() {
     gCtxText.clearRect(0, 0, gCanvasText.width, gCanvasText.height);
 }

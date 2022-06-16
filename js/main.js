@@ -6,6 +6,7 @@ var gCtx
 function onInit() {
     gCanvas = document.getElementById('img-layer')
     gCtx = gCanvas.getContext('2d')
+    renderGallery()
 }
 
 function getCanvas() {

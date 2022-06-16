@@ -10,9 +10,18 @@ var gLines = [
     }
 ]
 
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }];
+var gImdIdx = 1
+var gImgs = [
+    { id: gImdIdx++, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
+    { id: gImdIdx++, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
+    { id: gImdIdx++, url: 'img/1.jpg', keywords: ['funny', 'cat'] }
+
+];
 
 
+function getImages() {
+    return gImgs
+}
 
 function getMemeImg(imgId) {
     return gImgs.find(img => img.id === imgId)
@@ -31,5 +40,5 @@ function _setLineTxt() {
 }
 
 function onchangeInput(el) {
-    console.log('el:',el)
+    console.log('el:', el)
 }

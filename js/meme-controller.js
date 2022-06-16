@@ -1,19 +1,39 @@
 'use strict'
 
 function renderMeme() {
-    var elImgContainer = document.querySelector('.img-container')
-    elImgContainer.style.height = 500
-    elImgContainer.style.width = 500
-    elImgContainer.style.backgroundImage = 'url(/img/1.jpg)'
-    // elImgContainer.innerText = 'url(/img/1.jpg)'
+    var canvas = getCanvas()
+    var ctx = getCtx()
+
+    var canvasStack = new CanvasStack(ctx.id)
+    console.log('canvasStack:',canvasStack)
+
+    var layer1 = canvasStack.createLayer()
+    var layer1Ctx = document.getElementById(layer1).getContext('2d')
+    
+    
+    var img = new Image()
+    img.src = 'img/1.jpg'
+    img.onload = () => {
+        layer1Ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+    }
+    
+    var layer2 = canvasStack.createLayer()
+    var layer2Ctx = document.getElementById(layer2).getContext('2d')
+
+    layer2Ctx.drawText('Enter your text here', 50, 50)
+
+    // var elImgContainer = document.querySelector('.img-container')
+    // elImgContainer.style.height = 500
+    // elImgContainer.style.width = 500
+    // elImgContainer.style.backgroundImage = 'url(/img/1.jpg)'
+    // // elImgContainer.innerText = 'url(/img/1.jpg)'
     console.log('render');
 
-    var text = 'Enter your text here'
-    drawText(text, 50, 50)
+  
 }
 
 function drawText(text, x, y) {
-    var ctx = getCtxText()
+    var ctx = getCtx()
     console.log('ctx:', ctx)
     ctx.lineWidth = 2
     ctx.font = '50px Impact'

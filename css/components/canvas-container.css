@@ -8,3 +8,11 @@
     width: 500px;
     margin: auto;
 }
+
+#img-layer {
+    z-index: 1;
+}
+
+#text-layer {
+    z-index: 100;
+}

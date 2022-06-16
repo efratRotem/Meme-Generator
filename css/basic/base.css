@@ -12,9 +12,6 @@ body {
     text-align: center;
 }
 
-/* canvas{
-    /* display: block; */
-    /* margin: 0 auto;
-    outline: 1px solid black;
-    background-color: white;
-} */ */
+canvas {
+    position: absolute;
+}

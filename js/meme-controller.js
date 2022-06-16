@@ -5,7 +5,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Enter your text here',
             size: 45,
             align: 'left',
             color: 'red',

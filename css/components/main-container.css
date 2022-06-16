@@ -1,0 +1,5 @@
+.main-container {
+    flex-direction: row;
+    margin-bottom: 20px;
+    /* justify-content: center; */
+}

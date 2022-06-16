@@ -1,6 +1,12 @@
 .main-nav {
-    width: 80%;
+    width: 100%;
     height: 10vh;
     background-color: var(--clr1);
     margin: auto;
+    align-items: center;
+}
+
+.logo {
+    height: 40%;
+    margin: 30px;
 }

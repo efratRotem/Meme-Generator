@@ -1,20 +1,10 @@
 'use strict'
 
-var gLines = [
-    {
-        txt: 'I sometimes eat Falafel',
-        size: 45,
-        align: 'left',
-        color: 'red',
-        font: 'Impact'
-    }
-]
-
-var gImdIdx = 1
+var gImgIdx = 1
 var gImgs = [
-    { id: gImdIdx++, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
-    { id: gImdIdx++, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
-    { id: gImdIdx++, url: 'img/1.jpg', keywords: ['funny', 'cat'] }
+    { id: gImgIdx++, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
+    { id: gImgIdx++, url: 'img/2.jpg', keywords: ['funny', 'cat'] },
+    { id: gImgIdx++, url: 'img/3.jpg', keywords: ['funny', 'cat'] }
 
 ];
 
@@ -28,17 +18,15 @@ function getMemeImg(imgId) {
 
 }
 
-function getMemeTextLine(lineIdx) {
-    _setLineTxt()
-    return gLines[lineIdx]
-}
+// function getMemeTextLine(lineIdx) {
+//     _setLineTxt()
+//     return gLines[lineIdx]
+// }
 
-//Get the text inside <input> and update gLines accordingly
-function _setLineTxt() {
-    var lineTxt = getLineTxt()
-    gLines[0].txt = (lineTxt.value) ? lineTxt.value : lineTxt.placeholder
-}
+// //Get the text inside <input> and update gLines accordingly
+// function _setLineTxt() {
+//     var lineTxt = getLineTxt()
+//     gLines[0].txt = (lineTxt.value) ? lineTxt.value : lineTxt.placeholder
+// }
 
-function onchangeInput(el) {
-    console.log('el:', el)
-}
+

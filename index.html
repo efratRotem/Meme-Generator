@@ -21,17 +21,19 @@
 
         <section class="canvas-container flex">
 
-            <canvas id="img-layer" height="500" width="500"></canvas>
-            <canvas id="text-layer" height="500" width="500"></canvas>
+            <canvas class="meme-canvas" height="500" width="500"></canvas>
+
+            <!-- <canvas id="img-layer" height="500" width="500"></canvas>
+            <canvas id="text-layer" height="500" width="500"></canvas> -->
 
         </section>
 
         <section class="editor">
             This is my Editor!
-            <input onchange="onchangeInput(this)" type="text" name="" id="first-line"
-                placeholder="Enter your text here">
+            <input oninput="onChangeInput(event)" type="text" name="" id="first-line" placeholder="Enter your text here">
             <div class="editor-tools-container">
-                <button onclick="renderMeme()">Get Image</button>
+                <button onclick="renderMeme()">Get Start</button>
+                <!-- <button onclick="onAddText()">Get Text</button> -->
 
             </div>
         </section>

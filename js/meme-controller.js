@@ -1,56 +1,62 @@
 'use strict'
 
-var gCanvasText
-var gCtxText
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
+    lines: [
+        {
+            txt: 'I sometimes eat Falafel',
+            size: 45,
+            align: 'left',
+            color: 'red',
+            font: 'Impact'
+        }
+    ]
+
 }
 
 function renderMeme() {
-    const memeImg = getMemeImg(gMeme.selectedImgId)
-    const memeTextLine = getMemeTextLine(gMeme.selectedLineIdx)
-    // Get image-layer - the image canvas
+    console.log('gMeme:',gMeme)
     const canvas = getCanvas()
     const ctx = getCtx()
-    console.log('memeImg:', memeImg)
-    var img = new Image()
-    img.src = memeImg.url
-    img.onload = () => {
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-    }
-    //Get text-layer - the text canvas
-    gCanvasText = document.getElementById('text-layer')
-    gCtxText = gCanvasText.getContext('2d')
-    //Clearing former text
-    _clearCanvas()
-    //Drawing new text
-    drawText(gCtxText, memeTextLine, 50, 50)
-}
 
-// Putting text on maim-container as a canvas layer
-function drawText(layer, textLine, x, y) {
-    const ctx = layer
-    console.log('ctx:', ctx)
+    const memeImg = getMemeImg(gMeme.selectedImgId)
+    console.log('memeImg:', memeImg)
+    //Render image
+    // var img = new Image()
+    // img.src = memeImg.url
+    // img.onload = () => {
+    //     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+    // }
+    var elImg = document.querySelector(`.img${gMeme.selectedImgId}`)
+    console.log('elImg:',elImg)
+    ctx.drawImage(elImg, 0, 0, canvas.width, canvas.height)
+    //Render text
+    const memeLine = gMeme.lines[gMeme.selectedLineIdx]
     ctx.lineWidth = 2
-    ctx.font = `${textLine.size}px ${textLine.font}`
-    ctx.fillStyle = textLine.color
+    ctx.font = `${memeLine.size}px ${memeLine.font}`
+    ctx.fillStyle = memeLine.color
     ctx.strokeStyle = 'black'
-    ctx.fillText(textLine.txt, x, y)
-    ctx.strokeText(textLine.txt, x, y)
+    ctx.fillText(memeLine.txt, 50, 50)
+    ctx.strokeText(memeLine.txt, 50, 50)
 }
 
 function getMeme() {
     return gMeme
 }
 
-//Catching <input>
+//Catching <input> - the text line the user is entering
 function getLineTxt() {
     var elLineTxt = document.getElementById('first-line')
-    console.dir(elLineTxt)
     return elLineTxt
 }
 
-function _clearCanvas() {
-    gCtxText.clearRect(0, 0, gCanvasText.width, gCanvasText.height);
+function onAddText() {
+    drawText()
 }
+
+function onChangeInput(ev) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = ev.target.value
+    renderMeme()
+}
+

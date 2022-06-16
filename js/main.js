@@ -4,7 +4,7 @@ var gCanvas
 var gCtx
 
 function onInit() {
-    gCanvas = document.getElementById('img-layer')
+    gCanvas = document.querySelector('.meme-canvas')
     gCtx = gCanvas.getContext('2d')
     renderGallery()
 }

@@ -11,3 +11,7 @@
     padding: 0;
     list-style-type: none;
 }
+
+.oval {
+    border-radius: 1.5em;
+}

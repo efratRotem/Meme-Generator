@@ -1,0 +1,15 @@
+/* MOBILE */
+
+@media (max-width: 840px) {
+    
+
+   .main-container {
+    flex-direction: column;
+   }
+
+   .editor {
+    margin-top: 10px;
+   
+    
+   }
+}

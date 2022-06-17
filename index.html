@@ -12,10 +12,10 @@
 <body onload="onInit()">
     <header class="header-layout flex">
         <div class="main-nav flex">
-            <img src="img/logo.png" alt="logo" class="logo">
+            <img src="img/logo/logo.png" alt="logo" class="logo">
             <ul class="nav-bar flex clean-list">
-                <li>Gallery</li>
-                <li>About</li>
+               <a href="#" onclick="onGallery()"> <li>Gallery</li></a>
+               <a href="#" onclick="onAbout()"><li>About</li></a>
             </ul>
         </div>
     </header>
@@ -34,36 +34,38 @@
 
         <section class="editor">
 
-            <input oninput="onChangeInput(event)" type="text" name="" id="text-line" placeholder="Enter your text here">
+            <input oninput="onChangeInput(event)" type="text" name="" class="oval" id="text-line" placeholder="Enter your text here">
 
             <img class="icon icon1" onclick="onSwitchLines()"
                 src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="up-and-down">
-            <img class="icon icon2" onclick="console.log('clicked')" src="img/ICONS/add.png" alt="add">
-            <img class="icon icon3" onclick="console.log('clicked')" src="img/ICONS/trash.png" alt="trash">
+            <img class="icon icon2" onclick="onAdd()" src="img/ICONS/add.png" alt="add">
+            <img class="icon icon3" onclick="onDeleteLine()" src="img/ICONS/trash.png" alt="trash">
             <img class="icon icon4" onclick="onChangeFontSize(1)" src="img/ICONS/increase font - icon.png"
                 alt="increase-font">
             <img class="icon icon5" onclick="onChangeFontSize(-1)" src="img/ICONS/decrease font - icon.png"
                 alt="decrease-font">
-            <img class="icon icon6" onclick="console.log('clicked')" src="img/ICONS/align-to-left.png"
+            <img class="icon icon6" onclick="onAlignment('left')" src="img/ICONS/align-to-left.png"
                 alt="align-to-left">
-            <img class="icon icon7" onclick="console.log('clicked')" src="img/ICONS/center-text-alignment.png"
+            <img class="icon icon7" onclick="onAlignment('center')" src="img/ICONS/center-text-alignment.png"
                 alt="center-text-alignment">
-            <img class="icon icon8" onclick="console.log('clicked')" src="img/ICONS/align-to-right.png"
+            <img class="icon icon8" onclick="onAlignment('right')" src="img/ICONS/align-to-right.png"
                 alt="align-to-right">
-            <select class="font-select">
+            <select class="font-select oval" onchange="onChangeFont(value)">
                 <option>Impact</option>
                 <option>Georgia</option>
                 <option>Lucida Sans</option>
             </select>
             <img class="icon icon9" onclick="console.log('clicked')" src="img/ICONS/text stroke.png" alt="stroke">
             <!-- <img class="icon icon10" onclick="console.log('clicked')" src="img/ICONS/paint-board-and-brush.png" alt="paint-board-and-brush"> -->
-            <input type="color" name="" id="" class="icon icon10" value="#ffffff" onchange="onSetColor(event)">
+            <input type="color" name="" id="" class="icon icon10" value="#ff0000" onchange="onSetColor(event)">
+            <a href="#" class="download oval" onclick="onDownloadImg(this)" download="my-meme.jpg">Download</a>
+            <a href="#" class="share-container oval" onclick="onShareImg(this)">Share </a>
 
         </section>
     </main>
 
     <footer class="footer-layout flex">
-        <img src="img/logo.png" alt="logo" class="logo">
+        <img src="img/logo/logo.png" alt="logo" class="logo">
         <h5>All rights reserved 5782</h5>
     </footer>
 

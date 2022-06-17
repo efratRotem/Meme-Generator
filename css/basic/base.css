@@ -19,6 +19,10 @@ ul, li {
     margin: 2em;
 }
 
+li:hover {
+    color: var(--clr4);
+}
+
 canvas {
     position: absolute;
 }
@@ -30,4 +34,9 @@ input {
     border-radius: 1.5em;
     margin-bottom: 0.5em;
     border: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr2);
 }

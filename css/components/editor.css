@@ -2,22 +2,29 @@
     display: grid;
     width: 30%;
     /* height: 10px; */
-    grid-template-columns: repeat(5, 25%);
-    grid-template-rows: repeat(4);
+    grid-template-columns: repeat(5, 5em);
+    grid-template-rows: repeat(5);
     gap: 5px;
     /* margin: auto; */
-    grid-template-areas: 
-    "text text text text text"
-    ". a b c ."
-    "d e f g h"
-    "font font font i j";
+    grid-template-areas:
+        "text text text text text"
+        ". a b c ."
+        "d e f g h"
+        "font font font i j"
+        "download download . share share";
     justify-content: space-between;
+    gap: 10px;
+}
+
+section.editor> :not(.icon) {
+    padding: 1em;
+    align-self: baseline;
 }
 
 .icon {
     /* height: 10%; */
     width: 20%;
-    align-self:baseline;
+    align-self: baseline;
     justify-self: center;
 }
 
@@ -68,9 +75,25 @@
 .font-select {
     grid-area: font;
     font-size: 1em;
-    align-self:baseline;
     /* justify-self: center; */
-    border-radius: 1.5em;
     border: 0;
-    padding: 1.5em;
+}
+
+.download {
+    grid-area: download;
+    
+}
+
+.share-container {
+    grid-area: share;
+}
+
+.download,
+.share-container {
+    text-decoration: none;
+    background-color: var(--clr1);
+    align-self: baseline;
+    
+    color: var(--clr2);
+    height: 3em;
 }

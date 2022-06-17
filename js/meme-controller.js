@@ -25,6 +25,8 @@ var gMeme = {
 
 }
 
+var gSelection = 0
+
 function renderMeme() {
 
     console.log('gMeme:', gMeme)
@@ -46,16 +48,28 @@ function renderMeme() {
     //Render text
     gMeme.lines.map((memeLine, idx) => {
 
-
         ctx.lineWidth = 2
         ctx.font = `${memeLine.size}px ${memeLine.font}`
         ctx.fillStyle = memeLine.color
         ctx.strokeStyle = 'black'
-        ctx.fillText(memeLine.txt, 50, 50 * (idx * 8 + 1))
-        ctx.strokeText(memeLine.txt, 50, 50 * (idx * 8 + 1))
+
+        //Align the text accordingly to user choice
 
 
-        if (memeLine.isSelected) drawRect(0, 50 * (idx * 8) + 5)
+        var startTextXCord = getXCord()
+        var startTextYCord
+
+        if (idx === 0) startTextYCord = 50
+        else if (idx === 1) startTextYCord = 450
+        else startTextYCord = 250
+
+        ctx.fillText(memeLine.txt, startTextXCord, startTextYCord)
+        ctx.strokeText(memeLine.txt, startTextXCord, startTextYCord)
+
+        if (memeLine.isSelected) {
+            drawRect(0, startTextYCord - 50)
+        }
+        // Drawing rectangle to focus on chosen line
 
     })
 }
@@ -87,20 +101,11 @@ function onChangeInput(ev) {
 
 function onSwitchLines() {
 
-    var selectedIdx
-    var unselectedIdx
+    gMeme.selectedLineIdx = gSelection
 
-    if (gMeme.selectedLineIdx === 0) {
-        selectedIdx = 1
-        unselectedIdx = 0
-    } else {
-        selectedIdx = 0
-        unselectedIdx = 1
-    }
-
-    gMeme.lines[selectedIdx].isSelected = true
-    gMeme.lines[unselectedIdx].isSelected = false
-    gMeme.selectedLineIdx = selectedIdx
+    gMeme.lines.map((line, idx) => {
+        line.isSelected = (idx === gSelection) ? true : false
+    })
 
     const elTextLine = document.getElementById('text-line')
     elTextLine.value = gMeme.lines[gMeme.selectedLineIdx].txt
@@ -108,6 +113,30 @@ function onSwitchLines() {
 
     //Draw focus on text line above canvas
 
-    if (gMeme.lines[selectedIdx].isSelected) drawRect(0, 50 * (selectedIdx * 8))
+    if (gMeme.lines[gSelection].isSelected) drawRect(0, 50 * (gSelection * 8))
     renderMeme()
+    gSelection++
+    if (gSelection === gMeme.lines.length) gSelection = 0
+    console.log('gMeme.lines.length:', gMeme.lines.length)
+    console.log('gSelection:', gSelection)
+}
+
+function getXCord() {
+    var startTextFrom
+    const canvas = getCanvas()
+    switch (gMeme.lines[gMeme.selectedLineIdx].align) {
+        case 'left':
+            startTextFrom = 10
+            break;
+        case 'center':
+            startTextFrom = canvas.width / 2
+            break;
+        case 'right':
+            startTextFrom = canvas.width - 10
+            break;
+        default:
+            startTextFrom = 50
+            break;
+    }
+    return startTextFrom
 }

@@ -1,9 +1,11 @@
 .main-container {
     flex-direction: row;
     margin-bottom: 20px;
+    margin-top: 20px;
     /* justify-content: center; */
     /* margin: auto; */
     justify-content: center;
     justify-items: center;
     width: 80%;
+    display: none;
 }

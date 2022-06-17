@@ -14,3 +14,6 @@
 @import 'components/gallery-container.css';
 @import 'components/main-container.css';
 @import 'components/editor.css';
+
+/* MEDIA QUERY */
+@import 'mq/mq.css';

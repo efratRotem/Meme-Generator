@@ -16,5 +16,11 @@ function onImgSelect(imgId) {
     var meme = getMeme()
     meme.selectedImgId = imgId
     console.log('meme:', meme)
+    // Hiding Gallery
+    var elGallery = document.querySelector('.gallery-container')
+    elGallery.style.display = 'none'
+    //Showing Meme and editor
+    var elMemeEditor = document.querySelector('.main-container')
+    elMemeEditor.style.display = 'flex'
     renderMeme()
 }

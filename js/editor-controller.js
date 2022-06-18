@@ -9,9 +9,12 @@ function getSelectesIdx() {
 function onMoveLine(diff) {
     var meme = getMeme()
     var selectedIdx = meme.selectedLineIdx
+    console.log('meme.lines[selectedIdx].startTextYCord :', meme.lines[selectedIdx].startTextYCord)
+    meme.lines[selectedIdx].startTextYCord += diff
     // Making sure not to go out of the canvas
-    if (meme.lines[selectedIdx].startTextYCord > 40 & meme.lines[selectedIdx].startTextYCord < 500) meme.lines[selectedIdx].startTextYCord += diff
-    else return
+    if (meme.lines[selectedIdx].startTextYCord < 40) meme.lines[selectedIdx].startTextYCord = 40
+    if (meme.lines[selectedIdx].startTextYCord > 500) meme.lines[selectedIdx].startTextYCord = 500
+
     renderMeme()
 }
 

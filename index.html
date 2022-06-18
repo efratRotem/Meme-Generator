@@ -20,6 +20,7 @@
         </div>
     </header>
 
+    <!-- <button onclick="onUploadImg(event)">Upload Image</button> -->
     <section class="gallery-container"> </section>
 
     <main class="main-container flex">
@@ -35,11 +36,12 @@
         <section class="editor">
 
             <input oninput="onChangeInput(event)" type="text" name="" class="oval" id="text-line" placeholder="Enter your text here">
-
+            <a class="move-line-up oval" onclick="onMoveLine(-5)">Up</a>
             <img class="icon icon1" onclick="onSwitchLines()"
-                src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="up-and-down">
+            src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="up-and-down">
             <img class="icon icon2" onclick="onAdd()" src="img/ICONS/add.png" alt="add">
             <img class="icon icon3" onclick="onDeleteLine()" src="img/ICONS/trash.png" alt="trash">
+            <a class="move-line-down oval" onclick="onMoveLine(5)">Down</a>
             <img class="icon icon4" onclick="onChangeFontSize(1)" src="img/ICONS/increase font - icon.png"
                 alt="increase-font">
             <img class="icon icon5" onclick="onChangeFontSize(-1)" src="img/ICONS/decrease font - icon.png"
@@ -60,6 +62,7 @@
             <input type="color" name="" id="" class="icon icon10" value="#ff0000" onchange="onSetColor(event)">
             <a href="#" class="download oval" onclick="onDownloadImg(this)" download="my-meme.jpg">Download</a>
             <a href="#" class="share-container oval" onclick="onShareImg(this)">Share </a>
+            
 
         </section>
     </main>

@@ -6,6 +6,15 @@ function getSelectesIdx() {
     return selectedIdx
 }
 
+function onMoveLine(diff) {
+    var meme = getMeme()
+    var selectedIdx = meme.selectedLineIdx
+    // Making sure not to go out of the canvas
+    if (meme.lines[selectedIdx].startTextYCord > 40 & meme.lines[selectedIdx].startTextYCord < 500) meme.lines[selectedIdx].startTextYCord += diff
+    else return
+    renderMeme()
+}
+
 function onAdd() {
     var meme = getMeme()
     var newLine = {
@@ -14,7 +23,8 @@ function onAdd() {
         font: 'Impact',
         align: 'left',
         color: 'white',
-        isSelected: false
+        isSelected: false,
+        startTextYCord: 250
     }
     meme.lines.push(newLine)
     renderMeme()
@@ -23,11 +33,11 @@ function onAdd() {
 function onDeleteLine() {
     var meme = getMeme()
     var selectedIdx = meme.selectedLineIdx
-    console.log('selectedIdx:', selectedIdx)
     meme.lines.findIndex((line, idx) => {
         if (idx === selectedIdx) {
             meme.lines[idx].txt = ''
             meme.lines[idx].isSelected = false
+            meme.lines.splice(idx, 1)
         }
     })
     console.log('meme:', meme)
@@ -82,9 +92,30 @@ function onDownloadImg(elLink) {
     elLink.href = imgContent
 }
 
+function onUploadImg(ev) {
+    loadImageFromInput(ev, renderImg)
+}
+//                               CallBack func will run on success load of the img
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+    //After we read the file
+    reader.onload = function (event) {
+        var img = new Image()// Create a new html img element
+        img.src = event.target.result // Set the img src to the img file we read
+        //Run the callBack func , To render the img on the canvas
+        img.onload = onImageReady.bind(null, img)
+    }
+    reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+}
 
 
+function renderImg(img) {
+    var elCanvas = getCanvas()
+    var ctx = getCtx()
 
+    //Draw the img on the canvas
+    ctx.drawImage(img, 0, 0, elCanvas.width, elCanvas.height);
+}
 
 function onShareImg() {
 
@@ -96,7 +127,7 @@ function onShareImg() {
         //Encode the instance of certain characters in the url
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         console.log(encodedUploadedImgUrl);
-        document.querySelector('.user-msg').innerText = `Your photo is available here: ${uploadedImgUrl}`
+        // document.querySelector('.user-msg').innerText = `Your photo is available here: ${uploadedImgUrl}`
         //Create a link that on click will make a post in facebook with the image we uploaded
         document.querySelector('.share-container').innerHTML = `
         <a class="share" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">

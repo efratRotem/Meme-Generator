@@ -8,7 +8,7 @@
     /* margin: auto; */
     grid-template-areas:
         "text text text text text"
-        ". a b c ."
+        "up a b c down"
         "d e f g h"
         "font font font i j"
         "download download . share share";
@@ -72,6 +72,14 @@ section.editor> :not(.icon) {
     grid-area: j;
 }
 
+.move-line-up {
+    grid-area: up;
+}
+
+.move-line-down {
+    grid-area: down;
+}
+
 .font-select {
     grid-area: font;
     font-size: 1em;
@@ -89,11 +97,12 @@ section.editor> :not(.icon) {
 }
 
 .download,
-.share-container {
+.share-container,
+.move-line-up,
+.move-line-down {
     text-decoration: none;
     background-color: var(--clr1);
     align-self: baseline;
-    
-    color: var(--clr2);
+        color: var(--clr2);
     height: 3em;
 }

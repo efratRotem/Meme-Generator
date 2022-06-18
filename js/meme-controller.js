@@ -10,7 +10,8 @@ var gMeme = {
             font: 'Impact',
             align: 'left',
             color: 'white',
-            isSelected: true
+            isSelected: true,
+            startTextYCord: 50
         },
         {
             txt: 'Your text comes here',
@@ -18,14 +19,15 @@ var gMeme = {
             font: 'Impact',
             align: 'left',
             color: 'white',
-            isSelected: false
+            isSelected: false,
+            startTextYCord: 450
         }
 
     ]
 
 }
 
-var gSelection = 0
+var gSelection = 1
 
 function renderMeme() {
 
@@ -57,11 +59,11 @@ function renderMeme() {
 
 
         var startTextXCord = getXCord()
-        var startTextYCord
+        var startTextYCord = memeLine.startTextYCord
 
-        if (idx === 0) startTextYCord = 50
-        else if (idx === 1) startTextYCord = 450
-        else startTextYCord = 250
+        // if (idx === 0) startTextYCord = 50
+        // else if (idx === 1) startTextYCord = 450
+        // else startTextYCord = 250
 
         ctx.fillText(memeLine.txt, startTextXCord, startTextYCord)
         ctx.strokeText(memeLine.txt, startTextXCord, startTextYCord)
@@ -101,7 +103,7 @@ function onChangeInput(ev) {
 
 function onSwitchLines() {
 
-    gMeme.selectedLineIdx = gSelection
+     gMeme.selectedLineIdx = gSelection
 
     gMeme.lines.map((line, idx) => {
         line.isSelected = (idx === gSelection) ? true : false

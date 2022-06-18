@@ -21,8 +21,7 @@ var gImgs = [
     { id: gImgIdx++, url: 'img/17.jpg', keywords: ['funny', 'cat'] },
     { id: gImgIdx++, url: 'img/18.jpg', keywords: ['funny', 'cat'] },
 
-];
-
+]
 
 function getImages() {
     return gImgs

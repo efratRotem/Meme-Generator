@@ -5,6 +5,7 @@
 
    .main-container {
     flex-direction: column;
+    /* justify-content: center; */
    }
 
    .editor {

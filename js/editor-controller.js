@@ -38,12 +38,11 @@ function onDeleteLine() {
     var selectedIdx = meme.selectedLineIdx
     meme.lines.findIndex((line, idx) => {
         if (idx === selectedIdx) {
-            meme.lines[idx].txt = ''
-            meme.lines[idx].isSelected = false
+            line.txt = ''
+            line.isSelected = false
             meme.lines.splice(idx, 1)
         }
     })
-    console.log('meme:', meme)
     renderMeme()
 }
 
@@ -56,7 +55,6 @@ function onChangeFontSize(diff) {
 function onAlignment(dir) {
 
     var meme = getMeme()
-
     switch (dir) {
         case 'left':
             meme.lines[meme.selectedLineIdx].align = 'left'
@@ -68,6 +66,7 @@ function onAlignment(dir) {
             meme.lines[meme.selectedLineIdx].align = 'right'
             break;
     }
+    console.log('meme.lines[meme.selectedLineIdx].align:', meme.lines[meme.selectedLineIdx].align)
     renderMeme()
 }
 

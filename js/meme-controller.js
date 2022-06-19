@@ -5,7 +5,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Your text comes here',
+            txt: 'Your text comes here 1',
             size: 45,
             font: 'Impact',
             align: 'left',
@@ -49,15 +49,12 @@ function renderMeme() {
 
     //Render text
     gMeme.lines.map((memeLine, idx) => {
-
         ctx.lineWidth = 2
         ctx.font = `${memeLine.size}px ${memeLine.font}`
         ctx.fillStyle = memeLine.color
         ctx.strokeStyle = 'black'
 
         //Align the text accordingly to user choice
-
-
         var startTextXCord = getXCord()
         var startTextYCord = memeLine.startTextYCord
 
@@ -68,10 +65,10 @@ function renderMeme() {
         ctx.fillText(memeLine.txt, startTextXCord, startTextYCord)
         ctx.strokeText(memeLine.txt, startTextXCord, startTextYCord)
 
+        // Drawing rectangle to focus on chosen line
         if (memeLine.isSelected) {
             drawRect(0, startTextYCord - 50)
         }
-        // Drawing rectangle to focus on chosen line
 
     })
 }
@@ -103,7 +100,7 @@ function onChangeInput(ev) {
 
 function onSwitchLines() {
 
-     gMeme.selectedLineIdx = gSelection
+    gMeme.selectedLineIdx = gSelection
 
     gMeme.lines.map((line, idx) => {
         line.isSelected = (idx === gSelection) ? true : false
@@ -126,18 +123,19 @@ function onSwitchLines() {
 function getXCord() {
     var startTextFrom
     const canvas = getCanvas()
+    const ctx = getCtx()
+
+    let text = ctx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+
     switch (gMeme.lines[gMeme.selectedLineIdx].align) {
         case 'left':
             startTextFrom = 10
             break;
         case 'center':
-            startTextFrom = canvas.width / 2
+            startTextFrom = canvas.width / 2 - text.width / 2
             break;
         case 'right':
-            startTextFrom = canvas.width - 10
-            break;
-        default:
-            startTextFrom = 50
+            startTextFrom = canvas.width - text.width
             break;
     }
     return startTextFrom

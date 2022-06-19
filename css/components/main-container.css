@@ -2,10 +2,9 @@
     flex-direction: row;
     margin-bottom: 20px;
     margin-top: 20px;
-    /* justify-content: center; */
     /* margin: auto; */
-    justify-content: center;
+    justify-content: space-around;
     justify-items: center;
-    width: 80%;
+    /* width: 80%; */
     display: none;
 }

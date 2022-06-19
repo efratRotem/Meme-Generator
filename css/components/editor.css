@@ -1,9 +1,8 @@
 .editor {
     display: grid;
-    width: 30%;
     /* height: 10px; */
     grid-template-columns: repeat(5, 5em);
-    grid-template-rows: repeat(5);
+    grid-template-rows: repeat(6, 1fr);
     gap: 5px;
     /* margin: auto; */
     grid-template-areas:

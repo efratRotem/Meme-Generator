@@ -6,7 +6,7 @@
     outline: 1px solid black;
     height: 500px;
     width: 500px;
-    margin: auto;
+    /* margin: auto; */
 }
 
 #img-layer {
